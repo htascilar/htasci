@@ -12,6 +12,8 @@ function login() {
   }).then((userCredential) => {
     window.location.href = "panel.html";
   }).catch((error) => {
-    document.getElementById("error").textContent = error.message;
+    const errorMessage = error.message;
+    alert("Login failed: " + errorMessage);
+    document.getElementById("error").textContent = errorMessage;
   });
 }
