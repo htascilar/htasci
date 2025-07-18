@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f2f2f2;
+  background: #000;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,10 +11,10 @@ body {
 }
 
 .login-container {
-  background: white;
+  background: #000;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  box-shadow: 0 0 12px rgba(255,255,255,0.1);
   width: 100%;
   max-width: 340px;
   box-sizing: border-box;
@@ -23,9 +24,11 @@ input {
   width: 100%;
   padding: 0.6rem;
   margin: 0.5rem 0;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 6px;
   font-size: 1rem;
+  background: #000;
+  color: #fff;
 }
 
 button {
@@ -52,6 +55,17 @@ button:hover {
 .remember {
   font-size: 0.9rem;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 0.5rem;
+  color: white;
+}
+
+.version {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #777;
+  font-size: 0.8rem;
 }
