@@ -12,8 +12,9 @@ function login() {
   }).then((userCredential) => {
     window.location.href = "panel.html";
   }).catch((error) => {
-    const errorMessage = error.message;
-    alert("Login failed: " + errorMessage);
-    document.getElementById("error").textContent = errorMessage;
+    // Kullanıcıya sade bir uyarı göster
+    alert("Incorrect email or password.");
+    // Teknik hata mesajını DOM'da gizle
+    document.getElementById("error").textContent = "";
   });
 }
