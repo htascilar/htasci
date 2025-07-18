@@ -26,10 +26,7 @@
    <div class="hidden md:flex items-center justify-start w-full gap-6 text-sm text-gray-700 dark:text-gray-300">
     <div class="flex items-center gap-1 bg-white/50 dark:bg-gray-700/50 px-3 py-1 rounded-lg shadow-sm mb-4">
      <span>
-      👤
-     </span>
-     <span>
-      Ahmet Yılmaz
+      <span id="username">👤 Kullanıcı</span>
      </span>
     </div>
     <div class="flex flex-col items-start gap-1 ml-auto bg-white/50 dark:bg-gray-700/50 px-3 py-2 rounded-lg shadow-sm" id="clock">
@@ -98,7 +95,7 @@
      <li>
            </li>
     </ul>
-    🚪 Oturumu Kapat
+    <li onclick="logout()" style="cursor:pointer;">🚪 Oturumu Kapat</li>
    </aside>
    <!-- Main Content -->
    <main class="flex-1 p-6">
@@ -187,5 +184,67 @@
   setInterval(updateClock, 1000);
   updateClock();
   </script>
- </body>
+ 
+<!-- Firebase Auth Kontrol -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="firebase.js"></script>
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (!user) {
+      window.location.href = "index.html";
+    }
+  });
+</script>
+
+
+<script>
+  function logout() {
+    firebase.auth().signOut().then(() => {
+      window.location.href = "index.html";
+    });
+  }
+</script>
+
+<script>
+  let idleTime = 0;
+  setInterval(() => {
+    idleTime++;
+    if (idleTime > 30) {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "index.html";
+      });
+    }
+  }, 60000); // her dakika kontrol
+
+  window.onmousemove = window.onkeypress = () => {
+    idleTime = 0;
+  };
+</script>
+
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      const name = user.displayName || user.email;
+      document.getElementById("username").textContent = "👤 " + name;
+    }
+  });
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      const db = firebase.database();
+      const logRef = db.ref("giris_kayitlari").push();
+      logRef.set({
+        uid: user.uid,
+        email: user.email || "Anonim",
+        girisZamani: new Date().toLocaleString()
+      });
+    }
+  });
+</script>
+
+</body>
 </html>
