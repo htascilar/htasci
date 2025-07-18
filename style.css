@@ -8,6 +8,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 1rem;
+  position: relative;
 }
 
 .login-container {
@@ -64,8 +65,7 @@ button:hover {
 .version {
   position: fixed;
   bottom: 10px;
-  width: 100%;
-  text-align: center;
+  right: 15px;
   color: #777;
   font-size: 0.8rem;
 }
