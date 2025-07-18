@@ -21,7 +21,8 @@ body {
   box-sizing: border-box;
 }
 
-input {
+input[type="email"],
+input[type="password"] {
   width: 100%;
   padding: 0.6rem;
   margin: 0.5rem 0;
@@ -32,9 +33,24 @@ input {
   color: #fff;
 }
 
+.remember {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.remember input[type="checkbox"] {
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+}
+
 button {
   width: 100%;
   padding: 0.6rem;
+  margin-top: 1rem;
   background: #4CAF50;
   color: white;
   border: none;
@@ -51,16 +67,6 @@ button:hover {
   color: red;
   font-size: 0.9rem;
   margin-top: 0.5rem;
-}
-
-.remember {
-  font-size: 0.9rem;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-  color: white;
 }
 
 .version {
