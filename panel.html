@@ -14,7 +14,8 @@
       document.documentElement.classList.add('dark');
     }
   </script>
- </head>
+ <style>body.fixed { overflow: hidden; }</style>
+</head>
  <body class="bg-gradient-to-br from-gray-100 to-white text-gray-800 dark:from-gray-900 dark:to-gray-800 dark:text-white transition duration-300 ease-in-out">
   <!-- Navbar -->
   <nav class="bg-white/80 dark:bg-gray-800/70 backdrop-blur-md shadow-md px-4 py-3 flex justify-start items-center">
@@ -303,9 +304,11 @@ const closeMenu = document.getElementById("closeMenu");
 const overlay = document.getElementById("overlay");
 const menuToggle = document.getElementById("menuToggle");
 
+
 menuToggle?.addEventListener("click", () => {
   bottomMenu.classList.remove("translate-y-full");
   overlay.classList.remove("hidden");
+  document.body.classList.add("fixed");
 });
 closeMenu?.addEventListener("click", () => closeMobileMenu());
 overlay?.addEventListener("click", () => closeMobileMenu());
@@ -313,7 +316,9 @@ overlay?.addEventListener("click", () => closeMobileMenu());
 function closeMobileMenu() {
   bottomMenu.classList.add("translate-y-full");
   overlay.classList.add("hidden");
+  document.body.classList.remove("fixed");
 }
+
 </script>
 
 </body>
