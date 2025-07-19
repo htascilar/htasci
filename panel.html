@@ -1,9 +1,9 @@
 
 <!DOCTYPE html>
-<html class="" lang="tr">
+<html lang="tr">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mesai Takip Paneli</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -12,79 +12,59 @@
     }
   </script>
 </head>
-<body class="bg-gradient-to-br from-gray-100 to-white text-gray-800 dark:from-gray-900 dark:to-gray-800 dark:text-white transition duration-300 ease-in-out">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white">
+
   <!-- Navbar -->
-  <nav class="bg-white/80 dark:bg-gray-800/70 backdrop-blur-md shadow-md px-4 py-3 flex justify-start items-center">
-    <div class="md:hidden">
-      <button class="text-xl" id="menuToggle">☰</button>
-    </div>
-    <div class="hidden md:flex items-center justify-start w-full gap-6 text-sm text-gray-700 dark:text-gray-300">
-      <div class="flex items-center gap-1 bg-white/50 dark:bg-gray-700/50 px-3 py-1 rounded-lg shadow-sm mb-4">
-        <span id="kullaniciAdi">👤 Kullanıcı</span>
-      </div>
-      <div class="flex flex-col items-start gap-1 ml-auto bg-white/50 dark:bg-gray-700/50 px-3 py-2 rounded-lg shadow-sm" id="clock">
-        <div class="flex items-center gap-2">
-          <span>📅</span><span id="date"></span><span class="ml-1 font-semibold" id="day"></span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span>🕒</span><span id="time"></span>
-        </div>
-      </div>
-    </div>
+  <nav class="bg-white/80 dark:bg-gray-800/70 px-4 py-3 flex justify-between items-center shadow-md">
+    <span class="text-lg font-bold">Mesai Takip</span>
+    <button id="menuToggle" class="text-2xl md:hidden">☰</button>
   </nav>
 
-  <!-- Mobil Menü -->
-  <div id="mobileMenu" class="fixed top-0 left-0 w-64 h-full bg-white dark:bg-gray-800 shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
-    <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-      <span class="text-lg font-semibold text-gray-800 dark:text-white">📋 Menü</span>
-      <button id="closeMenu" class="text-xl text-gray-800 dark:text-white">✖</button>
+  <main class="p-6">
+    <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+    <p>İçerik alanı buraya gelecek...</p>
+  </main>
+
+  <!-- Bottom Sheet Menu -->
+  <div id="bottomMenu" class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 rounded-t-xl shadow-lg transform translate-y-full transition-transform duration-300 z-50">
+    <div class="flex justify-between items-center px-4 py-3 border-b border-gray-300 dark:border-gray-700">
+      <span class="text-lg font-semibold">📋 Menü</span>
+      <button id="closeMenu" class="text-xl">✖</button>
     </div>
-    <ul class="p-4 space-y-4 text-gray-700 dark:text-gray-300">
-      <li onclick="showPage('dashboard')">🏠 Dashboard</li>
-      <li onclick="showPage('mesai')">⏱️ Mesai Takip</li>
-      <li onclick="showPage('plan')">🗂️ İş Planım</li>
-      <li onclick="showPage('takvim')">📅 Takvim</li>
-      <li onclick="showPage('alarm')">⏰ Alarm</li>
-      <li onclick="showPage('oyunlar')">🎮 Oyunlar</li>
-      <li onclick="showPage('raporlar')">📈 Raporlar</li>
-      <li onclick="showPage('asistan')">🤖 Asistan</li>
-      <li onclick="showPage('motivasyon')">💬 Motivasyon</li>
-      <li onclick="firebase.auth().signOut().then(() => { sessionStorage.clear(); window.location.href = 'index.html'; })">🚪 Oturumu Kapat</li>
+    <ul class="p-4 space-y-4 text-gray-800 dark:text-gray-200">
+      <li onclick="alert('Dashboard')">🏠 Dashboard</li>
+      <li onclick="alert('Mesai Takip')">⏱️ Mesai Takip</li>
+      <li onclick="alert('Takvim')">📅 Takvim</li>
+      <li onclick="alert('Asistan')">🤖 Asistan</li>
+      <li onclick="alert('Çıkış')">🚪 Oturumu Kapat</li>
     </ul>
   </div>
 
-  <main class="flex-1 p-6"><div id="icerikAlani"></div></main>
-  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.8</footer>
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black/40 hidden z-40"></div>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString('tr-TR');
-      const dateString = now.toLocaleDateString('tr-TR');
-      const dayNames = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cts"];
-      const dayName = dayNames[now.getDay()];
-      document.getElementById('time').textContent = timeString;
-      document.getElementById('date').textContent = dateString;
-      document.getElementById('day').textContent = "(" + dayName + ")";
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
-  <script>
     const toggleBtn = document.getElementById("menuToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
-    const closeBtn = document.getElementById("closeMenu");
+    const bottomMenu = document.getElementById("bottomMenu");
+    const closeMenu = document.getElementById("closeMenu");
+    const overlay = document.getElementById("overlay");
+
     toggleBtn?.addEventListener("click", () => {
-      mobileMenu.classList.remove("-translate-x-full");
+      bottomMenu.classList.remove("translate-y-full");
+      overlay.classList.remove("hidden");
     });
-    closeBtn?.addEventListener("click", () => {
-      mobileMenu.classList.add("-translate-x-full");
+
+    closeMenu?.addEventListener("click", () => {
+      bottomMenu.classList.add("translate-y-full");
+      overlay.classList.add("hidden");
     });
-    window.addEventListener("click", (e) => {
-      if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
-        mobileMenu.classList.add("-translate-x-full");
-      }
+
+    overlay?.addEventListener("click", () => {
+      bottomMenu.classList.add("translate-y-full");
+      overlay.classList.add("hidden");
     });
   </script>
+
+  <footer class="text-xs text-center text-gray-500 dark:text-gray-400 py-4">Ver: v3.8</footer>
 </body>
 </html>
