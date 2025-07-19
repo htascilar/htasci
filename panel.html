@@ -301,7 +301,7 @@ function showPage(page) {
     const email = localStorage.getItem("email");
     if (dashUser && email) {
       const username = email.split("@")[0];
-      dashUser.innerText = username;
+      dashUser.innerText = "👤 " + username;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
