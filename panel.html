@@ -165,7 +165,7 @@
   </div>
   <!-- Versiyon numarası -->
   <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">
-   Ver: v3.8
+   Ver: v4.1
   </footer>
   <script>
    const toggleBtn = document.getElementById("menuToggle");
@@ -273,6 +273,43 @@ window.onload = () => {
   }
   showPage("dashboard");
 };
+  
+async function sendMessage() {
+  const input = document.getElementById("userInput");
+  const chat = document.getElementById("chatHistory");
+  const message = input.value.trim();
+  if (!message) return;
+
+  const userMsg = document.createElement("div");
+  userMsg.innerHTML = `<strong>Sen:</strong> ${message}`;
+  chat.appendChild(userMsg);
+  input.value = "";
+
+  const botMsg = document.createElement("div");
+  botMsg.innerHTML = `<em>Yanıtlanıyor...</em>`;
+  chat.appendChild(botMsg);
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer [OPENAI_API_KEY]"
+      },
+      body: JSON.stringify({
+        model: "gpt-4",
+        messages: [{ role: "user", content: message }]
+      })
+    });
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || "Cevap alınamadı.";
+    botMsg.innerHTML = `<strong>Asistan:</strong> ${reply}`;
+  } catch (err) {
+    botMsg.innerHTML = `<strong>Asistan:</strong> Bir hata oluştu.`;
+  }
+
+  chat.scrollTop = chat.scrollHeight;
+}
   </script>
  </body>
 </html>
