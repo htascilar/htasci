@@ -206,7 +206,8 @@
     if (email) {
       const span = document.getElementById("kullaniciAdi");
       if (span) {
-        span.innerText = "👤 " + email;
+        const username = email.split("@")[0];
+        span.innerText = "👤 " + username;
       }
     }
     showPage("dashboard");
@@ -218,18 +219,13 @@
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 p-4">
 
   <!-- Kullanıcı Kartı -->
-  
-<div class="bg-white/60 dark:bg-gray-800/70 p-6 rounded-xl shadow">
-  <div class="text-sm text-gray-500 dark:text-gray-300 mb-2">👤 Kullanıcı</div>
-  <div class="flex items-center gap-3">
-    <img id="userPhoto" src="https://via.placeholder.com/40" alt="Profil Foto" class="w-10 h-10 rounded-full object-cover border border-gray-300 dark:border-gray-600" />
-    <span id="userName" class="text-lg font-semibold text-gray-900 dark:text-white">Kullanıcı</span>
+  <div class="bg-white/60 dark:bg-gray-800/70 p-6 rounded-xl shadow">
+    <div class="text-sm text-gray-500 dark:text-gray-300">👤 Kullanıcı</div>
+    <div class="text-xl font-bold text-gray-900 dark:text-white" id="kullaniciAdiDashboard">Kullanıcı</div>
+    <button onclick="logout()" class="mt-4 bg-red-500 text-white text-sm px-4 py-2 rounded hover:bg-red-600">
+      🚪 Oturumu Kapat
+    </button>
   </div>
-  <button onclick="logout()" class="mt-4 bg-red-500 text-white text-sm px-4 py-2 rounded hover:bg-red-600">
-    🚪 Oturumu Kapat
-  </button>
-</div>
-
 
   <!-- Tarih ve Saat -->
   <div class="bg-white/60 dark:bg-gray-800/70 p-6 rounded-xl shadow">
@@ -304,7 +300,8 @@ function showPage(page) {
     const dashUser = document.getElementById("kullaniciAdiDashboard");
     const email = localStorage.getItem("email");
     if (dashUser && email) {
-      dashUser.innerText = email;
+      const username = email.split("@")[0];
+      dashUser.innerText = username;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -314,7 +311,8 @@ window.onload = () => {
   const email = localStorage.getItem("email");
   const span = document.getElementById("kullaniciAdi");
   if (email && span) {
-    span.innerText = "👤 " + email;
+    const username = email.split("@")[0];
+        span.innerText = "👤 " + username;
   }
   showPage("dashboard");
 };
@@ -413,16 +411,3 @@ function logout() {
 
 </body>
 </html>
-
-<script>
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    const photo = user.photoURL || "https://via.placeholder.com/40";
-    const name = user.displayName || "Kullanıcı";
-    const photoEl = document.getElementById("userPhoto");
-    const nameEl = document.getElementById("userName");
-    if (photoEl) photoEl.src = photo;
-    if (nameEl) nameEl.innerText = name;
-  }
-});
-</script>
