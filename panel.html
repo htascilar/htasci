@@ -7,23 +7,15 @@
    Mesai Takip Paneli
   </title>
   <script src="https://cdn.tailwindcss.com">
-  
-function logout() {
-  firebase.auth().signOut().then(() => {
-    sessionStorage.clear();
-    window.location.href = "index.html";
-  });
-}
-
-
-  
+  </script>
+  <script>
    // Otomatik tema (sistem temasına göre ayarlar)
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.classList.add('dark');
     }
-  
- <style>#gununSozuMetni { transition: opacity 0.5s ease-in-out; }</style>
-<style>body.fixed { overflow: hidden; }</style>
+  </script>
+ <style>body.fixed { overflow: hidden; }</style>
+<style>#gununSozuMetni { transition: opacity 0.5s ease-in-out; }</style>
 </head>
  <body class="bg-gradient-to-br from-gray-100 to-white text-gray-800 dark:from-gray-900 dark:to-gray-800 dark:text-white transition duration-300 ease-in-out">
   <!-- Navbar -->
@@ -177,10 +169,10 @@ function logout() {
   <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">
    Ver: v3.9
   </footer>
-  
+  <script>
    
-  
-  
+  </script>
+  <script>
    function updateClock() {
     const now = new Date();
     const timeString = now.toLocaleTimeString('tr-TR');
@@ -193,22 +185,22 @@ function logout() {
   }
   setInterval(updateClock, 1000);
   updateClock();
-  
+  </script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js">
-  
+  </script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js">
-  
+  </script>
   <script src="firebase.js">
-  
-  
+  </script>
+  <script>
    document.getElementById("logoutBtn")?.addEventListener("click", function() {
       firebase.auth().signOut().then(() => {
         sessionStorage.clear();
         window.location.href = "index.html";
       });
     });
-  
-  
+  </script>
+  <script>
    window.onload = () => {
     const email = localStorage.getItem("email");
     if (email) {
@@ -219,8 +211,8 @@ function logout() {
     }
     showPage("dashboard");
   };
-  
-  
+  </script>
+  <script>
    const pages = {
   dashboard: `
 <div class="text-2xl font-bold mb-2">👋 Hoş geldin, <span id="kullaniciAdiDashboard">Kullanıcı</span>!</div>
@@ -235,7 +227,7 @@ function logout() {
     <div class="text-lg font-semibold">0 saat</div>
   </div>
 </div>
-<div class="p-4 rounded-lg text-gray-700 dark:text-gray-100 italic text-sm">
+<div class="p-4 rounded-lg text-gray-700 dark:text-gray-100 italic text-sm transition-opacity duration-500">
   💬 Günün Sözü: <span id="gununSozuMetni">“Başlamak için mükemmel olmak zorunda değilsin. Ama mükemmel olmak için başlamak zorundasın.”</span>
 </div>
 `,
@@ -279,7 +271,7 @@ window.onload = () => {
   }
   showPage("dashboard");
 };
-  
+  </script>
  
 <!-- Bottom Sheet Menu (Mobile) -->
 <div id="bottomMenu" class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 rounded-t-xl shadow-lg transform translate-y-full transition-transform duration-300 z-50 md:hidden">
@@ -307,7 +299,7 @@ window.onload = () => {
 <div id="overlay" class="fixed inset-0 bg-black/40 hidden z-40 md:hidden"></div>
 
 <!-- Bottom Sheet Script -->
-
+<script>
 const bottomMenu = document.getElementById("bottomMenu");
 const closeMenu = document.getElementById("closeMenu");
 const overlay = document.getElementById("overlay");
@@ -328,36 +320,7 @@ function closeMobileMenu() {
   document.body.classList.remove("fixed");
 }
 
-
-
-
-
-const sozler = [
-  "Başlamak için mükemmel olmak zorunda değilsin. Ama mükemmel olmak için başlamak zorundasın.",
-  "Bugün, geri kalan hayatının ilk günü.",
-  "Düşünmeden öğrenmek faydasızdır; öğrenmeden düşünmek tehlikelidir.",
-  "Yavaş git ama asla geri dönme.",
-  "Zorluklar başarıya ulaşmak için bir fırsattır.",
-  "Hayaller, hedeflerin ön izlemesidir.",
-  "Kendine inan, her şey mümkün.",
-  "Başarı, hazırlanmış zihnin fırsatla buluşmasıdır.",
-  "Pes etme, büyük işler zaman alır.",
-  "Her gün yeni bir başlangıçtır."
-];
-
-function degistirGununSozu() {
-  const kutu = document.getElementById("gununSozuMetni");
-  if (kutu) {
-    const rastgele = Math.floor(Math.random() * sozler.length);
-    kutu.textContent = `“${sozler[rastgele]}”`;
-  }
-}
-setInterval(degistirGununSozu, 300000); // 5 dakika
-window.onload = function() {
-  if (typeof showPage === "function") showPage("dashboard");
-  degistirGununSozu();
-};
-
+</script>
 
 
 <script>
@@ -385,12 +348,20 @@ function degistirGununSozu() {
     }, 500);
   }
 }
-
 setInterval(degistirGununSozu, 300000); // 5 dakika
-window.onload = function() {
-  if (typeof showPage === "function") showPage("dashboard");
+window.addEventListener("DOMContentLoaded", () => {
   degistirGununSozu();
-};
+});
+</script>
+
+
+<script>
+function logout() {
+  firebase.auth().signOut().then(() => {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+  });
+}
 </script>
 
 </body>
