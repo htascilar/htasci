@@ -33,7 +33,11 @@ function login() {
   firebase.auth().setPersistence(persistence).then(() => {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }).then((userCredential) => {
-    window.location.href = "panel-7f32a9e1.html";
+    const sessionToken = Math.random().toString(36).substring(2) + Date.now();
+    const tokenCreatedAt = Date.now();
+    sessionStorage.setItem("sessionToken", sessionToken);
+    sessionStorage.setItem("tokenCreatedAt", tokenCreatedAt);
+    window.location.href = "panel.html?token=" + sessionToken;
   }).catch((error) => {
     alert("Incorrect email or password.");
     document.getElementById("error").textContent = "";

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="firebase.js"></script>
+</head>
+<body>
+  <h1>Welcome to the Panel</h1>
+  <p>You have successfully logged in.</p>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get("token");
+    const tokenFromStorage = sessionStorage.getItem("sessionToken");
+    const tokenCreatedAt = parseInt(sessionStorage.getItem("tokenCreatedAt"), 10);
+    const now = Date.now();
+    const maxAge = 15 * 60 * 1000; // 15 dakika
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (
+        !user ||
+        tokenFromUrl !== tokenFromStorage ||
+        isNaN(tokenCreatedAt) ||
+        (now - tokenCreatedAt) > maxAge
+      ) {
+        window.location.href = "index.html";
+      }
+    });
+
+    setInterval(() => {
+      window.location.reload();
+    }, 300000);
+  </script>
+</body>
+</html>
