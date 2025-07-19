@@ -73,7 +73,7 @@
    <main class="flex-1 p-6"><div id="icerikAlani"></div></main>
   </div>
   <!-- Versiyon numarası -->
-  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.5</footer>
+  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.6</footer>
 
   <script>
    const toggleBtn = document.getElementById("menuToggle");
@@ -109,9 +109,6 @@
       });
     });
   </script>
-
-
-</script>
 
 
 <script>
@@ -160,8 +157,52 @@
     showPage("mesai");
   };
 </script>
+
+<script>
+  const pages = {
+    mesai: `
+      <div class='text-xl font-semibold mb-4'>⏱️ Mesai Takip</div>
+      <div class="text-sm text-gray-700 dark:text-gray-300 mb-2">Mesai kayıt sistemi burada yer alacak.</div>
+      <div class="bg-white/40 dark:bg-gray-700/40 p-4 rounded-lg text-center text-xs sm:text-sm text-gray-500 dark:text-gray-300">
+      ⏱️ Bu alanda mesai başlatma, bitirme ve süre hesaplama modülü gösterilecek.
+      </div>
+    `,
+    plan: `<div class="text-xl font-semibold mb-4">🗂️ İş Planım</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    takvim: `<div class="text-xl font-semibold mb-4">📅 Takvim</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    alarm: `<div class="text-xl font-semibold mb-4">⏰ Alarm</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    oyunlar: `<div class="text-xl font-semibold mb-4">🎮 Oyunlar</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    kayitlar: `<div class="text-xl font-semibold mb-4">🧾 Kayıtlar</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    ayarlar: `<div class="text-xl font-semibold mb-4">⚙️ Ayarlar</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    webdisk: `<div class="text-xl font-semibold mb-4">💾 WebDisk</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    hatirlaticilar: `<div class="text-xl font-semibold mb-4">🔔 Hatırlatıcılar</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    raporlar: `<div class="text-xl font-semibold mb-4">📈 Raporlar</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    asistan: `<div class="text-xl font-semibold mb-4">🤖 Asistan</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+    motivasyon: `<div class="text-xl font-semibold mb-4">💬 Motivasyon</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`
+  };
+
+  function showPage(page) {
+    const container = document.getElementById("icerikAlani");
+    if (page === "dashboard") {
+      window.location.href = "panel.html";
+      return;
+    }
+    if (pages[page]) {
+      container.innerHTML = pages[page];
+    }
+  }
+
+  window.onload = () => {
+    const email = localStorage.getItem("email");
+    const span = document.getElementById("kullaniciAdi");
+    if (email && span) {
+      span.innerText = "👤 " + email;
+    }
+    showPage("mesai");
+  };
+</script>
 </body>
 </html>
+
 
 
 
