@@ -56,136 +56,84 @@
    <!-- Sidebar -->
    <aside class="bg-white/70 dark:bg-gray-800/60 backdrop-blur-md md:w-64 w-full md:min-h-screen p-4 space-y-4 hidden md:block" id="sidebar">
     <ul class="space-y-3 text-[15px] font-medium leading-5">
-     <li>
-      🏠 Dashboard
-     </li>
-     <li>
-      ⏱️ Mesai Takip
-     </li>
-     <li>
-      🗂️ İş Planım
-     </li>
-     <li>
-      📅 Takvim
-     </li>
-     <li>
-      ⏰ Alarm
-     </li>
-     <li>
-      🎮 Oyunlar
-     </li>
-     <li>
-      🧾 Kayıtlar
-     </li>
-     <li>
-      ⚙️ Ayarlar
-     </li>
-     <li>
-      💾 WebDisk
-     </li>
-     <li>
-      🔔 Hatırlatıcılar
-     </li>
-     <li>
-      📈 Raporlar
-     </li>
-     <li>
-      🤖 Asistan
-     </li>
-     <li>
-      💬 Motivasyon
-     </li>
-     <li>
-           </li>
+     <li>🏠 Dashboard</li>
+     <li>⏱️ Mesai Takip</li>
+     <li>🗂️ İş Planım</li>
+     <li>📅 Takvim</li>
+     <li>⏰ Alarm</li>
+     <li>🎮 Oyunlar</li>
+     <li>🧾 Kayıtlar</li>
+     <li>⚙️ Ayarlar</li>
+     <li>💾 WebDisk</li>
+     <li>🔔 Hatırlatıcılar</li>
+     <li>📈 Raporlar</li>
+     <li>🤖 Asistan</li>
+     <li>💬 Motivasyon</li>
+     <li><button id="logoutBtn" class="text-left w-full text-red-500 hover:underline">🚪 Oturumu Kapat</button></li>
     </ul>
-    🚪 Oturumu Kapat
    </aside>
    <!-- Main Content -->
    <main class="flex-1 p-6">
-    <h1 class="text-2xl font-bold mb-6">
-     Hoş geldin, Kullanıcı 👋
-    </h1>
-    <!-- Butonlar -->
+    <h1 class="text-2xl font-bold mb-6">Hoş geldin, Kullanıcı 👋</h1>
     <div class="flex flex-col sm:flex-row gap-4 mb-6">
-     <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl shadow-md transition">
-      🟢 İşe Başla
-     </button>
-     <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl shadow-md transition">
-      🔴 İşten Ayrıl
-     </button>
+     <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl shadow-md transition">🟢 İşe Başla</button>
+     <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl shadow-md transition">🔴 İşten Ayrıl</button>
     </div>
-    <!-- Kartlar -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
      <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
       📅
-      <div class="text-lg mt-2 font-semibold">
-       Bugünkü Süre
-      </div>
-      <div class="text-xl">
-       0s
-      </div>
+      <div class="text-lg mt-2 font-semibold">Bugünkü Süre</div>
+      <div class="text-xl">0s</div>
      </div>
      <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
       📊
-      <div class="text-lg mt-2 font-semibold">
-       Haftalık Süre
-      </div>
-      <div class="text-xl">
-       0s
-      </div>
+      <div class="text-lg mt-2 font-semibold">Haftalık Süre</div>
+      <div class="text-xl">0s</div>
      </div>
      <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
       ⏰
-      <div class="text-lg mt-2 font-semibold">
-       Fazla Mesai
-      </div>
-      <div class="text-xl">
-       0s
-      </div>
+      <div class="text-lg mt-2 font-semibold">Fazla Mesai</div>
+      <div class="text-xl">0s</div>
      </div>
     </div>
    </main>
   </div>
   <!-- Versiyon numarası -->
-  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">
-   Ver: v2.1
-  </footer>
-  <!-- Mobil Menü Aç/Kapa -->
+  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v2.2</footer>
+
   <script>
    const toggleBtn = document.getElementById("menuToggle");
-    const sidebar = document.getElementById("sidebar");
-    toggleBtn?.addEventListener("click", () => {
-      sidebar.classList.toggle("hidden");
+   const sidebar = document.getElementById("sidebar");
+   toggleBtn?.addEventListener("click", () => {
+     sidebar.classList.toggle("hidden");
+   });
+  </script>
+
+  <script>
+   function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('tr-TR');
+    const dateString = now.toLocaleDateString('tr-TR');
+    const dayNames = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cts"];
+    const dayName = dayNames[now.getDay()];
+    document.getElementById('time').textContent = timeString;
+    document.getElementById('date').textContent = dateString;
+    document.getElementById('day').textContent = "(" + dayName + ")";
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="firebase.js"></script>
+  <script>
+    document.getElementById("logoutBtn")?.addEventListener("click", function() {
+      firebase.auth().signOut().then(() => {
+        sessionStorage.clear();
+        window.location.href = "index.html";
+      });
     });
   </script>
-  <script>
-   function updateClock() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('tr-TR');
-    const dateString = now.toLocaleDateString('tr-TR');
-    const dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
-    const dayName = dayNames[now.getDay()];
-
-    document.getElementById('time').textContent = timeString;
-    document.getElementById('date').textContent = dateString;
-    document.getElementById('day').textContent = "(" + dayName + ")";
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-  </script>
-  <script>
-   function updateClock() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('tr-TR');
-    const dateString = now.toLocaleDateString('tr-TR');
-    const dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
-    const dayName = dayNames[now.getDay()];
-    document.getElementById('time').textContent = timeString;
-    document.getElementById('date').textContent = dateString;
-    document.getElementById('day').textContent = "(" + dayName + ")";
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-  </script>
- </body>
+</body>
 </html>
