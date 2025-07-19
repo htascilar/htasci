@@ -259,6 +259,7 @@ function showPage(page) {
     const email = localStorage.getItem("email");
     if (dashUser && email) {
       dashUser.innerText = email;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 }
