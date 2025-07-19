@@ -56,24 +56,24 @@
    <!-- Sidebar -->
    <aside class="bg-white/70 dark:bg-gray-800/60 backdrop-blur-md md:w-64 w-full md:min-h-screen p-4 space-y-4 hidden md:block" id="sidebar">
     <ul class="space-y-3 text-[15px] font-medium leading-5">
-     <li>🏠 Dashboard</li>
-     <li>⏱️ Mesai Takip</li>
-     <li>🗂️ İş Planım</li>
-     <li>📅 Takvim</li>
-     <li>⏰ Alarm</li>
-     <li>🎮 Oyunlar</li>
-     <li>🧾 Kayıtlar</li>
-     <li>⚙️ Ayarlar</li>
-     <li>💾 WebDisk</li>
-     <li>🔔 Hatırlatıcılar</li>
-     <li>📈 Raporlar</li>
-     <li>🤖 Asistan</li>
-     <li>💬 Motivasyon</li>
+     <li><span class="cursor-pointer" onclick="showPage('dashboard')"><span class="cursor-pointer" onclick="showPage('dashboard')">🏠 Dashboard</span></span></li>
+     <li><span class="cursor-pointer" onclick="showPage('mesai')">⏱️ Mesai Takip</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('plan')">🗂️ İş Planım</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('takvim')">📅 Takvim</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('alarm')">⏰ Alarm</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('oyunlar')">🎮 Oyunlar</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('kayitlar')">🧾 Kayıtlar</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('ayarlar')">⚙️ Ayarlar</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('webdisk')">💾 WebDisk</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('hatirlaticilar')">🔔 Hatırlatıcılar</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('raporlar')">📈 Raporlar</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('asistan')">🤖 Asistan</span></li>
+     <li><span class="cursor-pointer" onclick="showPage('motivasyon')"><span class="cursor-pointer" onclick="showPage('motivasyon')">💬 Motivasyon</span></span></li>
      <li><button id="logoutBtn" class="text-left w-full text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">🚪 Oturumu Kapat</button></li>
     </ul>
    </aside>
    <!-- Main Content -->
-   <main class="flex-1 p-6">
+   <main class="flex-1 p-6"><div id="icerikAlani"></div>
     <h1 class="text-2xl font-bold mb-6">Hoş geldin, Kullanıcı 👋</h1>
     <div class="flex flex-col sm:flex-row gap-4 mb-6">
      <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl shadow-md transition">🟢 İşe Başla</button>
@@ -99,7 +99,7 @@
    </main>
   </div>
   <!-- Versiyon numarası -->
-  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v2.4</footer>
+  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v2.8</footer>
 
   <script>
    const toggleBtn = document.getElementById("menuToggle");
@@ -135,5 +135,43 @@
       });
     });
   </script>
+
+
+</script>
+
+<script>
+  const pages = {
+    dashboard: `
+<div class="text-xl font-semibold mb-4">📊 Dashboard</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
+    📅<div class="text-lg mt-2 font-semibold">Bugünkü Süre</div><div class="text-xl">0s</div>
+  </div>
+  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
+    📊<div class="text-lg mt-2 font-semibold">Haftalık Süre</div><div class="text-xl">0s</div>
+  </div>
+  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
+    ⏰<div class="text-lg mt-2 font-semibold">Fazla Mesai</div><div class="text-xl">0s</div>
+  </div>
+</div>
+`,
+    mesai: `<div class='text-xl font-semibold'>⏱️ Mesai Takip sayfası yakında aktif olacak...</div>`,plan: `<div class='text-xl font-semibold'>🗂️ İş Planım sayfası yakında aktif olacak...</div>`,takvim: `<div class='text-xl font-semibold'>📅 Takvim sayfası yakında aktif olacak...</div>`,alarm: `<div class='text-xl font-semibold'>⏰ Alarm sayfası yakında aktif olacak...</div>`,oyunlar: `<div class='text-xl font-semibold'>🎮 Oyunlar sayfası yakında aktif olacak...</div>`,kayitlar: `<div class='text-xl font-semibold'>🧾 Kayıtlar sayfası yakında aktif olacak...</div>`,ayarlar: `<div class='text-xl font-semibold'>⚙️ Ayarlar sayfası yakında aktif olacak...</div>`,webdisk: `<div class='text-xl font-semibold'>💾 WebDisk sayfası yakında aktif olacak...</div>`,hatirlaticilar: `<div class='text-xl font-semibold'>🔔 Hatırlatıcılar sayfası yakında aktif olacak...</div>`,raporlar: `<div class='text-xl font-semibold'>📈 Raporlar sayfası yakında aktif olacak...</div>`,asistan: `<div class='text-xl font-semibold'>🤖 Asistan sayfası yakında aktif olacak...</div>`,motivasyon: `
+        <div class='text-xl font-semibold mb-4'>💬 Motivasyon</div>
+        <div class="bg-yellow-50 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-4 rounded-xl shadow-md text-center text-sm sm:text-base">
+          🌟 "Bugün yapacağın küçük bir adım, yarının temelini oluşturur."
+        </div>`
+  };
+
+  function showPage(page) {
+    const container = document.getElementById("icerikAlani");
+    if (pages[page]) {
+      container.innerHTML = pages[page];
+    }
+  }
+
+  window.onload = () => showPage("dashboard");
+</script>
 </body>
 </html>
+
+
