@@ -73,7 +73,7 @@
    <main class="flex-1 p-6"><div id="icerikAlani"></div></main>
   </div>
   <!-- Versiyon numarası -->
-  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.6</footer>
+  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.7</footer>
 
   <script>
    const toggleBtn = document.getElementById("menuToggle");
@@ -113,12 +113,18 @@
 
 <script>
   window.onload = () => {
+
     const email = localStorage.getItem("email");
     if (email) {
       const span = document.getElementById("kullaniciAdi");
       if (span) {
         span.innerText = "👤 " + email;
-      }
+      
+    const dashUser = document.getElementById("kullaniciAdiDashboard");
+    if (email && dashUser) {
+      dashUser.innerText = email;
+    }
+  }
     }
     showPage("dashboard");
   };
@@ -126,6 +132,21 @@
 
 <script>
   const pages = {
+dashboard: `<div class="text-2xl font-bold mb-2">👋 Hoş geldin, <span id="kullaniciAdiDashboard">Kullanıcı</span>!</div>
+<div class="text-sm text-gray-600 dark:text-gray-300 mb-4">📅 Bugün: 19 Temmuz 2025 - Cumartesi</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+  <div class="bg-white/40 dark:bg-gray-700/40 p-4 rounded-lg shadow">
+    <div class="text-sm text-gray-500 dark:text-gray-300 mb-1">🌤️ Köln'de Hava</div>
+    <div class="text-lg font-semibold">27°C, Güneşli</div>
+  </div>
+  <div class="bg-white/40 dark:bg-gray-700/40 p-4 rounded-lg shadow">
+    <div class="text-sm text-gray-500 dark:text-gray-300 mb-1">⏱️ Bugünkü Mesai Süresi</div>
+    <div class="text-lg font-semibold">0 saat</div>
+  </div>
+</div>
+<div class="bg-yellow-100 dark:bg-yellow-800/30 p-4 rounded-lg border-l-4 border-yellow-400 dark:border-yellow-600 text-gray-700 dark:text-gray-100 italic text-sm">
+  💬 Günün Sözü: “Başlamak için mükemmel olmak zorunda değilsin. Ama mükemmel olmak için başlamak zorundasın.”
+</div>` ,
     mesai: `
         <div class='text-xl font-semibold mb-4'>⏱️ Mesai Takip</div>
         <div class="text-sm text-gray-700 dark:text-gray-300 mb-2">Mesai kayıt sistemi burada yer alacak.</div>
@@ -147,19 +168,40 @@
   }
 
   window.onload = () => {
+
     const email = localStorage.getItem("email");
     if (email) {
       const span = document.getElementById("kullaniciAdi");
       if (span) {
         span.innerText = "👤 " + email;
-      }
+      
+    const dashUser = document.getElementById("kullaniciAdiDashboard");
+    if (email && dashUser) {
+      dashUser.innerText = email;
     }
-    showPage("mesai");
+  }
+    }
+    showPage("dashboard");
   };
 </script>
 
 <script>
   const pages = {
+dashboard: `<div class="text-2xl font-bold mb-2">👋 Hoş geldin, <span id="kullaniciAdiDashboard">Kullanıcı</span>!</div>
+<div class="text-sm text-gray-600 dark:text-gray-300 mb-4">📅 Bugün: 19 Temmuz 2025 - Cumartesi</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+  <div class="bg-white/40 dark:bg-gray-700/40 p-4 rounded-lg shadow">
+    <div class="text-sm text-gray-500 dark:text-gray-300 mb-1">🌤️ Köln'de Hava</div>
+    <div class="text-lg font-semibold">27°C, Güneşli</div>
+  </div>
+  <div class="bg-white/40 dark:bg-gray-700/40 p-4 rounded-lg shadow">
+    <div class="text-sm text-gray-500 dark:text-gray-300 mb-1">⏱️ Bugünkü Mesai Süresi</div>
+    <div class="text-lg font-semibold">0 saat</div>
+  </div>
+</div>
+<div class="bg-yellow-100 dark:bg-yellow-800/30 p-4 rounded-lg border-l-4 border-yellow-400 dark:border-yellow-600 text-gray-700 dark:text-gray-100 italic text-sm">
+  💬 Günün Sözü: “Başlamak için mükemmel olmak zorunda değilsin. Ama mükemmel olmak için başlamak zorundasın.”
+</div>` ,
     mesai: `
       <div class='text-xl font-semibold mb-4'>⏱️ Mesai Takip</div>
       <div class="text-sm text-gray-700 dark:text-gray-300 mb-2">Mesai kayıt sistemi burada yer alacak.</div>
@@ -192,12 +234,18 @@
   }
 
   window.onload = () => {
+
     const email = localStorage.getItem("email");
     const span = document.getElementById("kullaniciAdi");
     if (email && span) {
       span.innerText = "👤 " + email;
+    
+    const dashUser = document.getElementById("kullaniciAdiDashboard");
+    if (email && dashUser) {
+      dashUser.innerText = email;
     }
-    showPage("mesai");
+  }
+    showPage("dashboard");
   };
 </script>
 </body>
