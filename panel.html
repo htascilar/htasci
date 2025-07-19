@@ -165,7 +165,7 @@
   </div>
   <!-- Versiyon numarası -->
   <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">
-   Ver: v4.2
+   Ver: v3.8
   </footer>
   <script>
    const toggleBtn = document.getElementById("menuToggle");
@@ -249,57 +249,7 @@
   webdisk: `<div class="text-xl font-semibold mb-4">💾 WebDisk</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
   hatirlaticilar: `<div class="text-xl font-semibold mb-4">🔔 Hatırlatıcılar</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
   raporlar: `<div class="text-xl font-semibold mb-4">📈 Raporlar</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
-  asistan: `
-<div class="text-xl font-semibold mb-4">🤖 Chat Asistan</div>
-
-<!-- Rol Seçimi -->
-<div class="mb-2">
-  <label for="role" class="text-sm">🎭 Rol:</label>
-  <select id="role" class="text-sm px-2 py-1 rounded border dark:bg-gray-700 dark:text-white">
-    <option value="assistant">Sohbet Botu</option>
-    <option value="teacher">Öğretmen Asistanı</option>
-    <option value="coder">Kodlama Yardımcısı</option>
-    <option value="planner">Görev Planlayıcı</option>
-  </select>
-</div>
-
-<!-- Dil Seçimi -->
-<div class="mb-2">
-  <label for="lang" class="text-sm">🌐 Dil:</label>
-  <select id="lang" class="text-sm px-2 py-1 rounded border dark:bg-gray-700 dark:text-white">
-    <option value="Türkçe">Türkçe</option>
-    <option value="English">English</option>
-    <option value="Deutsch">Deutsch</option>
-  </select>
-</div>
-
-<!-- Tepki Stili -->
-<div class="mb-2">
-  <label for="style" class="text-sm">✍️ Cevap Stili:</label>
-  <select id="style" class="text-sm px-2 py-1 rounded border dark:bg-gray-700 dark:text-white">
-    <option value="kısa">Kısa</option>
-    <option value="orta">Orta</option>
-    <option value="detaylı">Detaylı</option>
-  </select>
-</div>
-
-<!-- Hızlı Sorular -->
-<div class="flex flex-wrap gap-2 text-xs mb-2">
-  <button onclick="quickAsk('Bugünün motivasyon sözü nedir?')" class="bg-gray-300 dark:bg-gray-600 px-2 py-1 rounded">💬 Motivasyon</button>
-  <button onclick="quickAsk('Bugün ne yapmalıyım?')" class="bg-gray-300 dark:bg-gray-600 px-2 py-1 rounded">📋 Günlük Plan</button>
-  <button onclick="quickAsk('Komik bir fıkra anlat.')" class="bg-gray-300 dark:bg-gray-600 px-2 py-1 rounded">😄 Fıkra</button>
-</div>
-
-<!-- Sohbet Geçmişi ve Temizleme -->
-<div id="chatHistory" class="bg-white/40 dark:bg-gray-800/40 p-4 rounded-lg h-64 overflow-y-auto mb-2 text-sm text-gray-800 dark:text-gray-200"></div>
-<button onclick="clearChat()" class="mb-4 px-3 py-1 text-xs bg-red-500 hover:bg-red-600 text-white rounded">🧹 Sohbeti Temizle</button>
-
-<!-- Mesaj ve Gönder -->
-<div class="flex gap-2">
-  <input type="text" id="userInput" placeholder="Bir şey yaz..." class="flex-1 px-3 py-2 rounded border dark:bg-gray-700 dark:text-white text-sm">
-  <button onclick="sendMessage()" class="px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-white text-sm">Gönder</button>
-</div>
-`, `<div class="text-xl font-semibold mb-4">🤖 Asistan</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
+  asistan: `<div class="text-xl font-semibold mb-4">🤖 Asistan</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`,
   motivasyon: `<div class="text-xl font-semibold mb-4">💬 Motivasyon</div><div class="text-gray-500 italic">Bu sayfa yakında aktif olacak...</div>`
 };
 
@@ -323,43 +273,6 @@ window.onload = () => {
   }
   showPage("dashboard");
 };
-  
-async function sendMessage() {
-  const input = document.getElementById("userInput");
-  const chat = document.getElementById("chatHistory");
-  const message = input.value.trim();
-  if (!message) return;
-
-  const userMsg = document.createElement("div");
-  userMsg.innerHTML = `<strong>Sen:</strong> ${message}`;
-  chat.appendChild(userMsg);
-  input.value = "";
-
-  const botMsg = document.createElement("div");
-  botMsg.innerHTML = `<em>Yanıtlanıyor...</em>`;
-  chat.appendChild(botMsg);
-
-  try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer [OPENAI_API_KEY]"
-      },
-      body: JSON.stringify({
-        model: "gpt-4",
-        messages: [{ role: "user", content: message }]
-      })
-    });
-    const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content || "Cevap alınamadı.";
-    botMsg.innerHTML = `<strong>Asistan:</strong> ${reply}`;
-  } catch (err) {
-    botMsg.innerHTML = `<strong>Asistan:</strong> Bir hata oluştu.`;
-  }
-
-  chat.scrollTop = chat.scrollHeight;
-}
   </script>
  </body>
 </html>
