@@ -155,35 +155,8 @@
       sidebar.classList.toggle("hidden");
     });
   </script>
-  <script>
-   function updateClock() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('tr-TR');
-    const dateString = now.toLocaleDateString('tr-TR');
-    const dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
-    const dayName = dayNames[now.getDay()];
-
-    document.getElementById('time').textContent = timeString;
-    document.getElementById('date').textContent = dateString;
-    document.getElementById('day').textContent = "(" + dayName + ")";
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-  </script>
-  <script>
-   function updateClock() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('tr-TR');
-    const dateString = now.toLocaleDateString('tr-TR');
-    const dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
-    const dayName = dayNames[now.getDay()];
-    document.getElementById('time').textContent = timeString;
-    document.getElementById('date').textContent = dateString;
-    document.getElementById('day').textContent = "(" + dayName + ")";
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-  </script>
+  
+  
  
 <!-- Firebase Auth Kontrol -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -246,5 +219,19 @@
   });
 </script>
 
+<script>
+  function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('tr-TR');
+    const dateString = now.toLocaleDateString('tr-TR');
+    const dayNames = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
+    const dayName = dayNames[now.getDay()];
+    document.getElementById('time').textContent = timeString;
+    document.getElementById('date').textContent = dateString;
+    document.getElementById('day').textContent = "(" + dayName + ")";
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
 </body>
 </html>

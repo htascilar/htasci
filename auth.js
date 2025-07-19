@@ -1,3 +1,4 @@
+
 window.onload = function () {
   const savedEmail = localStorage.getItem("email");
   const savedPassword = localStorage.getItem("password");
@@ -25,11 +26,16 @@ function login() {
     localStorage.removeItem("remember");
   }
 
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      window.location.href = "panel.html";
-    })
-    .catch((error) => {
-      document.getElementById("error").textContent = "Giriş başarısız: " + error.message;
-    });
+  const persistence = rememberMe
+    ? firebase.auth.Auth.Persistence.LOCAL
+    : firebase.auth.Auth.Persistence.SESSION;
+
+  firebase.auth().setPersistence(persistence).then(() => {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  }).then((userCredential) => {
+    window.location.href = "panel.html";
+  }).catch((error) => {
+    alert("Incorrect email or password.");
+    document.getElementById("error").textContent = "";
+  });
 }
