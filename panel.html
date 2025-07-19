@@ -1,38 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Panel</title>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-  <script src="firebase.js"></script>
-</head>
-<body>
-  <h1>Welcome to the Panel</h1>
-  <p>You have successfully logged in.</p>
-
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const tokenFromUrl = urlParams.get("token");
-    const tokenFromStorage = sessionStorage.getItem("sessionToken");
-    const tokenCreatedAt = parseInt(sessionStorage.getItem("tokenCreatedAt"), 10);
-    const now = Date.now();
-    const maxAge = 15 * 60 * 1000; // 15 dakika
-
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (
-        !user ||
-        tokenFromUrl !== tokenFromStorage ||
-        isNaN(tokenCreatedAt) ||
-        (now - tokenCreatedAt) > maxAge
-      ) {
-        window.location.href = "index.html";
-      }
-    });
-
-    setInterval(() => {
-      window.location.reload();
-    }, 300000);
+<html class="" lang="tr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Mesai Takip Paneli
+  </title>
+  <script src="https://cdn.tailwindcss.com">
   </script>
-</body>
+  <script>
+   // Otomatik tema (sistem temasına göre ayarlar)
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+ </head>
+ <body class="bg-gradient-to-br from-gray-100 to-white text-gray-800 dark:from-gray-900 dark:to-gray-800 dark:text-white transition duration-300 ease-in-out">
+  <!-- Navbar -->
+  <nav class="bg-white/80 dark:bg-gray-800/70 backdrop-blur-md shadow-md px-4 py-3 flex justify-start items-center">
+   <div class="md:hidden">
+    <button class="text-xl" id="menuToggle">
+     ☰
+    </button>
+   </div>
+   <div class="hidden md:flex items-center justify-start w-full gap-6 text-sm text-gray-700 dark:text-gray-300">
+    <div class="flex items-center gap-1 bg-white/50 dark:bg-gray-700/50 px-3 py-1 rounded-lg shadow-sm mb-4">
+     <span>
+      👤
+     </span>
+     <span>
+      Ahmet Yılmaz
+     </span>
+    </div>
+    <div class="flex flex-col items-start gap-1 ml-auto bg-white/50 dark:bg-gray-700/50 px-3 py-2 rounded-lg shadow-sm" id="clock">
+     <div class="flex items-center gap-2">
+      <span>
+       📅
+      </span>
+      <span id="date">
+      </span>
+      <span class="ml-1 font-semibold" id="day">
+      </span>
+     </div>
+     <div class="flex items-center gap-2">
+      <span>
+       🕒
+      </span>
+      <span id="time">
+      </span>
+     </div>
+    </div>
+   </div>
+  </nav>
+  <div class="flex flex-col md:flex-row">
+   <!-- Sidebar -->
+   <aside class="bg-white/70 dark:bg-gray-800/60 backdrop-blur-md md:w-64 w-full md:min-h-screen p-4 space-y-4 hidden md:block" id="sidebar">
+    <ul class="space-y-3 text-[15px] font-medium leading-5">
+     <li>
+      🏠 Dashboard
+     </li>
+     <li>
+      ⏱️ Mesai Takip
+     </li>
+     <li>
+      🗂️ İş Planım
+     </li>
+     <li>
+      📅 Takvim
+     </li>
+     <li>
+      ⏰ Alarm
+     </li>
+     <li>
+      🎮 Oyunlar
+     </li>
+     <li>
+      🧾 Kayıtlar
+     </li>
+     <li>
+      ⚙️ Ayarlar
+     </li>
+     <li>
+      💾 WebDisk
+     </li>
+     <li>
+      🔔 Hatırlatıcılar
+     </li>
+     <li>
+      📈 Raporlar
+     </li>
+     <li>
+      🤖 Asistan
+     </li>
+     <li>
+      💬 Motivasyon
+     </li>
+     <li>
+           </li>
+    </ul>
+    🚪 Oturumu Kapat
+   </aside>
+   <!-- Main Content -->
+   <main class="flex-1 p-6">
+    <h1 class="text-2xl font-bold mb-6">
+     Hoş geldin, Kullanıcı 👋
+    </h1>
+    <!-- Butonlar -->
+    <div class="flex flex-col sm:flex-row gap-4 mb-6">
+     <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl shadow-md transition">
+      🟢 İşe Başla
+     </button>
+     <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl shadow-md transition">
+      🔴 İşten Ayrıl
+     </button>
+    </div>
+    <!-- Kartlar -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+     <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
+      📅
+      <div class="text-lg mt-2 font-semibold">
+       Bugünkü Süre
+      </div>
+      <div class="text-xl">
+       0s
+      </div>
+     </div>
+     <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
+      📊
+      <div class="text-lg mt-2 font-semibold">
+       Haftalık Süre
+      </div>
+      <div class="text-xl">
+       0s
+      </div>
+     </div>
+     <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
+      ⏰
+      <div class="text-lg mt-2 font-semibold">
+       Fazla Mesai
+      </div>
+      <div class="text-xl">
+       0s
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+  <!-- Versiyon numarası -->
+  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">
+   Ver: v2.1
+  </footer>
+  <!-- Mobil Menü Aç/Kapa -->
+  <script>
+   const toggleBtn = document.getElementById("menuToggle");
+    const sidebar = document.getElementById("sidebar");
+    toggleBtn?.addEventListener("click", () => {
+      sidebar.classList.toggle("hidden");
+    });
+  </script>
+  <script>
+   function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('tr-TR');
+    const dateString = now.toLocaleDateString('tr-TR');
+    const dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+    const dayName = dayNames[now.getDay()];
+
+    document.getElementById('time').textContent = timeString;
+    document.getElementById('date').textContent = dateString;
+    document.getElementById('day').textContent = "(" + dayName + ")";
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+  </script>
+  <script>
+   function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('tr-TR');
+    const dateString = now.toLocaleDateString('tr-TR');
+    const dayNames = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+    const dayName = dayNames[now.getDay()];
+    document.getElementById('time').textContent = timeString;
+    document.getElementById('date').textContent = dateString;
+    document.getElementById('day').textContent = "(" + dayName + ")";
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+  </script>
+ </body>
 </html>
