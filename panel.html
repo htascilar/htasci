@@ -99,7 +99,7 @@
    </main>
   </div>
   <!-- Versiyon numarası -->
-  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.2</footer>
+  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.3</footer>
 
   <script>
    const toggleBtn = document.getElementById("menuToggle");
@@ -139,122 +139,22 @@
 
 </script>
 
-<script>
-  const pages = {
-    dashboard: `
-<div class="text-xl font-semibold mb-4">📊 Dashboard</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
-    📅<div class="text-lg mt-2 font-semibold">Bugünkü Süre</div><div class="text-xl">0s</div>
-  </div>
-  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
-    📊<div class="text-lg mt-2 font-semibold">Haftalık Süre</div><div class="text-xl">0s</div>
-  </div>
-  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
-    ⏰<div class="text-lg mt-2 font-semibold">Fazla Mesai</div><div class="text-xl">0s</div>
-  </div>
-</div>
-`,
-    mesai: `<div class='text-xl font-semibold'>⏱️ Mesai Takip sayfası yakında aktif olacak...</div>`,plan: `<div class='text-xl font-semibold'>🗂️ İş Planım sayfası yakında aktif olacak...</div>`,takvim: `<div class='text-xl font-semibold'>📅 Takvim sayfası yakında aktif olacak...</div>`,alarm: `<div class='text-xl font-semibold'>⏰ Alarm sayfası yakında aktif olacak...</div>`,oyunlar: `<div class='text-xl font-semibold'>🎮 Oyunlar sayfası yakında aktif olacak...</div>`,kayitlar: `<div class='text-xl font-semibold'>🧾 Kayıtlar sayfası yakında aktif olacak...</div>`,ayarlar: `<div class='text-xl font-semibold'>⚙️ Ayarlar sayfası yakında aktif olacak...</div>`,webdisk: `<div class='text-xl font-semibold'>💾 WebDisk sayfası yakında aktif olacak...</div>`,hatirlaticilar: `<div class='text-xl font-semibold'>🔔 Hatırlatıcılar sayfası yakında aktif olacak...</div>`,raporlar: `<div class='text-xl font-semibold'>📈 Raporlar sayfası yakında aktif olacak...</div>`,asistan: `<div class='text-xl font-semibold'>🤖 Asistan sayfası yakında aktif olacak...</div>`,motivasyon: `
-        <div class='text-xl font-semibold mb-4'>💬 Motivasyon</div>
-        <div class="bg-yellow-50 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-4 rounded-xl shadow-md text-center text-sm sm:text-base">
-          🌟 "Bugün yapacağın küçük bir adım, yarının temelini oluşturur."
-        </div>`
-  };
-
-  
-function showPage(page) {
-  const container = document.getElementById("icerikAlani");
-  if (page === "dashboard") {
-    window.location.href = "panel.html";
-    return;
-  }
-  if (pages[page]) {
-    container.innerHTML = pages[page];
-  }
-}
-
-  }
-
-  window.onload = () => showPage("dashboard");
-</script>
 
 <script>
-  const pages = {
-    dashboard: `
-<div class="text-xl font-semibold mb-4">📊 Dashboard</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
-    📅<div class="text-lg mt-2 font-semibold">Bugünkü Süre</div><div class="text-xl">0s</div>
-  </div>
-  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
-    📊<div class="text-lg mt-2 font-semibold">Haftalık Süre</div><div class="text-xl">0s</div>
-  </div>
-  <div class="bg-white/60 dark:bg-gray-700/60 backdrop-blur-md p-5 rounded-2xl shadow-inner text-center">
-    ⏰<div class="text-lg mt-2 font-semibold">Fazla Mesai</div><div class="text-xl">0s</div>
-  </div>
-</div>
-`,
-    mesai: `
-        <div class='text-xl font-semibold mb-4'>⏱️ Mesai Takip</div>
-        <div class="text-sm text-gray-700 dark:text-gray-300 mb-2">Mesai kayıt sistemi burada yer alacak.</div>
-        <div class="bg-white/40 dark:bg-gray-700/40 p-4 rounded-lg text-center text-xs sm:text-sm text-gray-500 dark:text-gray-300">
-        ⏱️ Bu alanda mesai başlatma, bitirme ve süre hesaplama modülü gösterilecek.
-        </div>
-        `,plan: `
-        <div class='text-xl font-semibold mb-4'>🗂️ İş Planım</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,takvim: `
-        <div class='text-xl font-semibold mb-4'>📅 Takvim</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,alarm: `
-        <div class='text-xl font-semibold mb-4'>⏰ Alarm</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,oyunlar: `
-        <div class='text-xl font-semibold mb-4'>🎮 Oyunlar</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,kayitlar: `
-        <div class='text-xl font-semibold mb-4'>🧾 Kayıtlar</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,ayarlar: `
-        <div class='text-xl font-semibold mb-4'>⚙️ Ayarlar</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,webdisk: `
-        <div class='text-xl font-semibold mb-4'>💾 WebDisk</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,hatirlaticilar: `
-        <div class='text-xl font-semibold mb-4'>🔔 Hatırlatıcılar</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,raporlar: `
-        <div class='text-xl font-semibold mb-4'>📈 Raporlar</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,asistan: `
-        <div class='text-xl font-semibold mb-4'>🤖 Asistan</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `,motivasyon: `
-        <div class='text-xl font-semibold mb-4'>💬 Motivasyon</div>
-        <div class="text-sm text-gray-600 dark:text-gray-300 italic">Bu sayfa yakında aktif olacak...</div>
-        `
+  window.onload = () => {
+    const email = localStorage.getItem("email");
+    if (email) {
+      const span = document.getElementById("kullaniciAdi");
+      if (span) {
+        span.innerText = "👤 " + email;
+      }
+    }
+    showPage("dashboard");
   };
-
-  
-function showPage(page) {
-  const container = document.getElementById("icerikAlani");
-  if (page === "dashboard") {
-    window.location.href = "panel.html";
-    return;
-  }
-  if (pages[page]) {
-    container.innerHTML = pages[page];
-  }
-}
-
-  }
-
-  window.onload = () => showPage("dashboard");
 </script>
 </body>
 </html>
+
 
 
 
