@@ -99,7 +99,7 @@
    </main>
   </div>
   <!-- Versiyon numarası -->
-  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.0</footer>
+  <footer class="fixed bottom-6 right-2 text-xs text-gray-500 dark:text-gray-400">Ver: v3.2</footer>
 
   <script>
    const toggleBtn = document.getElementById("menuToggle");
@@ -162,11 +162,18 @@
         </div>`
   };
 
-  function showPage(page) {
-    const container = document.getElementById("icerikAlani");
-    if (pages[page]) {
-      container.innerHTML = pages[page];
-    }
+  
+function showPage(page) {
+  const container = document.getElementById("icerikAlani");
+  if (page === "dashboard") {
+    window.location.href = "panel.html";
+    return;
+  }
+  if (pages[page]) {
+    container.innerHTML = pages[page];
+  }
+}
+
   }
 
   window.onload = () => showPage("dashboard");
@@ -230,11 +237,18 @@
         `
   };
 
-  function showPage(page) {
-    const container = document.getElementById("icerikAlani");
-    if (pages[page]) {
-      container.innerHTML = pages[page];
-    }
+  
+function showPage(page) {
+  const container = document.getElementById("icerikAlani");
+  if (page === "dashboard") {
+    window.location.href = "panel.html";
+    return;
+  }
+  if (pages[page]) {
+    container.innerHTML = pages[page];
+  }
+}
+
   }
 
   window.onload = () => showPage("dashboard");
