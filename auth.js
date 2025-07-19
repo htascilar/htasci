@@ -33,7 +33,7 @@ function login() {
   firebase.auth().setPersistence(persistence).then(() => {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }).then((userCredential) => {
-    window.location.href = "panel.html";
+    window.location.href = "panel-7f32a9e1.html";
   }).catch((error) => {
     alert("Incorrect email or password.");
     document.getElementById("error").textContent = "";
